@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<tab id="wemessage" sortOrder="999" translate="label">
+			<label>Wemessage</label>
+		</tab>
+		<section id="producttags" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+			<label>Product Tags</label>
+			<tab>wemessage</tab>
+			<resource>Wemessage_ProductTags::config_wemessage_producttags</resource>
+			<group id="options" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+				<label>Module Options</label>
+				<field id="enable" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="select">
+					<label>Enable</label>
+					<comment>enable module</comment>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				<field id="tagslug" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="text">
+					<label>Tag url</label>
+					<comment>Url under which it will be visible in frontend</comment>
+					<depends>
+                        <field id="producttags/options/enable">1</field>
+                    </depends>
+				</field>
+			</group>
+		</section>
+	</system>
+</config>

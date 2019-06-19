@@ -1,0 +1,16 @@
+<div class="block-footer">
+	<?php if($block->getData('widgettitle')): ?>
+		<div class="title-block-footer">
+			<h4><?php echo $block->getData('widgettitle'); ?></h4>
+		</div>
+	<?php endif; ?>
+	<ul class="tags-footer">
+		<?php $tags = $block->getAllTags($block->getData('limit')); ?>
+		<?php foreach($tags as $tag): ?>
+			<li><a class="" href="<?=$block->getFrontendUrl().'/'.$tag->getTag();?>"><?=$tag->getTag();?></a></li>
+		<?php endforeach; ?>
+	</ul>
+</div>
+
+
+   

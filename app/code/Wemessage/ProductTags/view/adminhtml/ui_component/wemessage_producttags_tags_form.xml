@@ -1,0 +1,89 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">wemessage_producttags_tags_form.tags_form_data_source</item>
+		</item>
+		<item name="label" translate="true" xsi:type="string">General Information</item>
+		<item name="template" xsi:type="string">templates/form/collapsible</item>
+	</argument>
+	<settings>
+		<buttons>
+			<button class="Wemessage\ProductTags\Block\Adminhtml\Tags\Edit\BackButton" name="back"/>
+			<button class="Wemessage\ProductTags\Block\Adminhtml\Tags\Edit\DeleteButton" name="delete"/>
+			<button class="Wemessage\ProductTags\Block\Adminhtml\Tags\Edit\SaveButton" name="save"/>
+			<button class="Wemessage\ProductTags\Block\Adminhtml\Tags\Edit\SaveAndContinueButton" name="save_and_continue"/>
+		</buttons>
+		<namespace>wemessage_producttags_tags_form</namespace>
+		<dataScope>data</dataScope>
+		<deps>
+			<dep>wemessage_producttags_tags_form.tags_form_data_source</dep>
+		</deps>
+	</settings>
+	<dataSource name="tags_form_data_source">
+		<argument name="data" xsi:type="array">
+			<item name="js_config" xsi:type="array">
+				<item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+			</item>
+		</argument>
+		<settings>
+			<submitUrl path="*/*/save"/>
+		</settings>
+		<dataProvider class="Wemessage\ProductTags\Model\Tags\DataProvider" name="tags_form_data_source">
+			<settings>
+				<requestFieldName>tags_id</requestFieldName>
+				<primaryFieldName>tags_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<fieldset name="general">
+		<settings>
+			<label/>
+		</settings>
+		<field formElement="input" name="product_id" sortOrder="10">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Tags</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">product_id</label>
+				<dataScope>product_id</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+			</settings>
+		</field>
+		<field formElement="input" name="product_name" sortOrder="20">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Tags</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">product_name</label>
+				<dataScope>product_name</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+			</settings>
+		</field>
+		<field formElement="input" name="tag" sortOrder="30">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Tags</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">tag</label>
+				<dataScope>tag</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+			</settings>
+		</field>
+	</fieldset>
+</form>

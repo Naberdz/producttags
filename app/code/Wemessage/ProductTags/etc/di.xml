@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Wemessage\ProductTags\Api\TagsRepositoryInterface" type="Wemessage\ProductTags\Model\TagsRepository"/>
+	<preference for="Wemessage\ProductTags\Api\Data\TagsInterface" type="Wemessage\ProductTags\Model\Data\Tags"/>
+	<preference for="Wemessage\ProductTags\Api\Data\TagsSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Wemessage\ProductTags\Model\ResourceModel\Tags\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">wemessage_producttags_tags</argument>
+			<argument name="resourceModel" xsi:type="string">Wemessage\ProductTags\Model\ResourceModel\Tags\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="wemessage_producttags_tags_listing_data_source" xsi:type="string">Wemessage\ProductTags\Model\ResourceModel\Tags\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+</config>

@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<!--<add id="Wemessage::top_level" module="Wemessage_ProductTags" resource="Magento_Backend::content" sortOrder="9999" title="Wemessage"/>-->
+		<add action="wemessage_producttags/tags/index" id="Wemessage_ProductTags::wemessage_producttags_tags" module="Wemessage_ProductTags" parent="Wemessage::top_level" resource="Magento_Backend::content" sortOrder="9999" title="Tags"/>
+	</menu>
+</config>
