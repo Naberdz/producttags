@@ -1,0 +1,71 @@
+<div class="producttags">
+<?php
+/**
+ * @var $block \Wemessage\ProductTags\Block\TagForm
+ */
+
+$product = $block->getProduct();
+
+
+$tags = $block->getTags();
+if($tags->getSize()):?>
+	<div class="tag-container">
+		<?php foreach($tags as $tag):?>
+			<a class="btn action primary" href="<?= $block->getFrontendUrl().'/'.$tag->getTag(); ?>"><?= $tag->getTag(); ?></a>
+		<?php endforeach; ?>
+	</div>
+<?php else : ?>
+<div class="message info"><div><?= __('There where no tags for this product'); ?></div></div>
+<?php endif; ?>
+<form method="post" id="addtag">
+	<input type="hidden" name="product_id" value="<?= $product->getId(); ?>" />
+	<input type="hidden" name="product_name" value="<?= $product->getName(); ?>" />
+	<input type="text" name="tag" placeholder="<?= __('Input tags separeted with ,'); ?>"/>
+	<div class="actions">
+		<button type="submit" class="action primary"><?= __('Add tags');?></button>
+	</div>
+</form>
+</div>
+<div id="popup-modal"></div>
+<script>
+require(['jquery', 'Magento_Ui/js/modal/modal'],function($, modal){
+	var options = {
+        type: 'popup',
+        responsive: true,
+        innerScroll: true,
+        title: 'Tag',
+        modalClass: 'custom-modal',
+        buttons: [{
+            text: $.mage.__('Continue'),
+            class: '',
+            click: function () {
+                this.closeModal();
+                $('#popup-modal').html(" ");
+                window.location.reload();
+            }
+        }]
+    };
+    var popup = modal(options, $('#popup-modal'));
+    
+    $(document).ready(function() {
+		$("#addtag").submit(function(e){
+			e.preventDefault();
+			$.ajax({
+				url: "/producttag/add",
+				type: "POST",
+				data: {product_id:$("input[name='product_id']").val(), product_name:$("input[name='product_name']").val(), tag:$("input[name='tag']").val()},
+				success: function(response){
+					var res = response;
+					if(res.error){
+						$("#popup-modal").html('<div class="error">'+res.msg+'</div>');
+					}
+					if(res.success){
+						$("#popup-modal").html('<div class="success">'+res.msg+'</div>');
+					}
+					$("#popup-modal").modal('openModal');
+				}
+			});
+		});
+	});
+});
+</script>

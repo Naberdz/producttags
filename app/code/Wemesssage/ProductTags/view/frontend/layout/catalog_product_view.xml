@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+    	<css src="Wemessage_ProductTags::css/productpage.css" />
+    </head> 
+	<body>
+		<referenceBlock name="product.info.details">
+			<block ifconfig="producttags/options/enable" as="tagform" class="Wemessage\ProductTags\Block\TagForm" name="product.tags" template="Wemessage_ProductTags::tagform.phtml" group="detailed_info">
+				<arguments>
+                	<argument translate="true" name="title" xsi:type="string">Tags</argument>
+              	</arguments>
+            </block>
+		</referenceBlock>
+		<referenceBlock name="content">
+			<block ifconfig="producttags/options/showalsotagged" as="alsotagged" class="Wemessage\ProductTags\Block\AlsoTagged" name="product.relatedtags" template="Wemessage_ProductTags::alsotagged.phtml" before="page.bottom.container"/>
+		</referenceBlock>
+	</body>
+</page>

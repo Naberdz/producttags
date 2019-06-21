@@ -1,0 +1,23 @@
+.producttags {
+	float: left; 
+	clear: both;
+	margin-bottom: 20px;
+	width: 100%;
+}
+form#addtag {
+    float: left;
+    width: 100%;
+    clear: both;
+    display:table;
+}
+.tag-container {
+    float: left;
+    width: 100%;
+    margin-bottom: 20px;
+}
+#addtag input[name="tag"], #addtag .actions {
+	display:table-cell;
+}
+#addtag .actions button {
+	margin-left: 10px;
+}
