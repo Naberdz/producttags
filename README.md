@@ -1,9 +1,21 @@
 # Magento 2 module product tags
 
-adds tab to product where users can tag the product.
+This Module adds tags functionality to Magento 2.
 
-in backend administrator can delete tags which are not suited.
+Frontend users can tag a product, tags can be viewed on a tag page ( slug is defined in backend ). Display Tagged product as related products on a productpage. Add widget with tags to any page / block.
 
-tag page where visitors can see all tags and products.
+Admin can delete tags which are not suited mass action supported.
 
-widget to show tags anywhere have limit field
+System config :
+
+![Screenshot](system.png)
+
+Backend: 
+![Screenshot](backend_grid.png)
+
+Frontend : 
+![Screenshot](product_page.png)
+![Screenshot](widget.png)
+![Screenshot](tag_page.png)
+
+To install module simply download it and put contents of the app/code to the magento app/code Directory
