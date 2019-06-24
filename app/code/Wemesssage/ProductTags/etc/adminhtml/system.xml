@@ -22,6 +22,14 @@
                         <field id="producttags/options/enable">1</field>
                     </depends>
 				</field>
+				<field id="onlyforcustomers" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="select">
+					<label>Only for customers</label>
+					<comment>Allow only registered customers to add tags</comment>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<depends>
+                        <field id="producttags/options/enable">1</field>
+                    </depends>
+				</field>
 				<field id="numberofproducts" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="text">
 					<label>Number of products per page</label>
 					<comment></comment>

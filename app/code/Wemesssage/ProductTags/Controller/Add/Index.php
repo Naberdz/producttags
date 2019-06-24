@@ -15,7 +15,10 @@ class Index extends \Magento\Framework\App\Action\Action
      * @var \Wemessage\ProductTags\Model\Tags
      */
     protected $_tags;
-
+    /**
+     * @var \Magento\Customer\Model\Session
+     */
+	protected $_session;
     /**
      * Constructor
      *
@@ -28,11 +31,13 @@ class Index extends \Magento\Framework\App\Action\Action
         \Magento\Framework\App\Action\Context $context,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,
         \Magento\Framework\Json\Helper\Data $jsonHelper,
-        \Wemessage\ProductTags\Model\Tags $tags
+        \Wemessage\ProductTags\Model\Tags $tags,
+        \Magento\Customer\Model\Session $session
     ) {
         $this->resultPageFactory = $resultPageFactory;
         $this->jsonHelper = $jsonHelper;
         $this->_tags = $tags;
+        $this->_session = $sesseion;
         parent::__construct($context);
     }
 
@@ -55,6 +60,11 @@ class Index extends \Magento\Framework\App\Action\Action
     			$tag->setProductId($data['product_id']);
     			$tag->setProductName($data['product_name']);
     			$tag->setTag($tagName);
+    			if($this->_session->isLoggedin()){
+    				$tag->setUserId($this->_session->getCustomer()->getId());
+    			} else {
+    				$tag->setUserId(0);
+    			}
     			$tag->save();
     		}
     		$response = array('success'=>true, 'msg'=>__('Thank you for your input'));

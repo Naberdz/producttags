@@ -19,7 +19,7 @@ class TagForm extends \Magento\Framework\View\Element\Template
      */
     private $_product;
     
-    	/**
+    /**
 	 * @var \Magento\Framework\App\Config\ScopeConfigInterface
 	 */
 	protected $_scopeConfig;
@@ -27,13 +27,24 @@ class TagForm extends \Magento\Framework\View\Element\Template
 	 * @var \Magento\Store\Model\StoreManagerInterface
 	 */
     protected $_storeManager;
+    /**
+	 * @var \Magento\Customer\Model\Session
+	 */
+    protected $_session;
+    /**
+	 * @var \Magento\Customer\Model\Url
+	 */
+    protected $_customerUrl;
     
     /**
      * Constructor
      *
      * @param \Magento\Framework\View\Element\Template\Context  $context
      * @param \Magento\Framework\Registry $registry
-     * @param \Wemessage\ProductTags\Model\TagsFactory
+     * @param \Wemessage\ProductTags\Model\TagsFactory $tagsFactory
+     * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
+     * @param \Magento\Store\Model\StoreManagerInterface $storeManager
+     * @param \Magento\Customer\Model\Session $session
      * @param array $data
      */
     public function __construct(
@@ -42,6 +53,8 @@ class TagForm extends \Magento\Framework\View\Element\Template
         \Wemessage\ProductTags\Model\TagsFactory $tagsFactory,
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
+        \Magento\Customer\Model\Session $session,
+        \Magento\Customer\Model\Url $customerUrl,
         array $data = []
     ) {
         parent::__construct($context, $data);
@@ -49,6 +62,8 @@ class TagForm extends \Magento\Framework\View\Element\Template
         $this->_tagsFactory = $tagsFactory->create();
         $this->_scopeConfig = $scopeConfig;
         $this->_storeManager = $storeManager;
+        $this->_session = $session;
+        $this->_customerUrl = $customerUrl;
     }
 
     /**
@@ -80,5 +95,31 @@ class TagForm extends \Magento\Framework\View\Element\Template
     public function getFrontendUrl(){
         return $this->_storeManager->getStore()->getBaseUrl().$this->_scopeConfig->getValue('producttags/options/tagslug', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
     }
-
+	/**
+	 * @return boolean
+	 */
+	public function getOnlyForCustomers(){
+		return $this->_scopeConfig->getValue('producttags/options/onlyforcustomers', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+	}
+	/**
+	 * @return boolean
+	 */
+	public function getIsLoggedIn(){
+		return $this->_session->isLoggedIn();
+	}
+	
+	/**
+     * @return string
+     */
+    public function getRegisterUrl()
+    {
+        return $this->_customerUrl->getRegisterUrl();
+    }
+    /**
+     * @return string
+     */
+    public function getLoginLink()
+    {
+        return $this->_customerUrl->getLoginUrl();
+    }
 }

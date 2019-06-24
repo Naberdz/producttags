@@ -6,7 +6,8 @@
 			<column name="tags_id"/>
 		</constraint>
 		<column name="product_id" nullable="true" xsi:type="smallint"/>
-		<column name="product_name" nullable="true" xsi:type="varchar" length="255"/>
-		<column name="tag" nullable="true" xsi:type="varchar" length="255"/>
+		<column length="255" name="product_name" nullable="true" xsi:type="varchar"/>
+		<column length="255" name="tag" nullable="true" xsi:type="varchar"/>
+		<column default="0" name="user_id" nullable="true" xsi:type="smallint"/>
 	</table>
 </schema>

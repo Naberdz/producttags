@@ -21,3 +21,8 @@ form#addtag {
 #addtag .actions button {
 	margin-left: 10px;
 }
+.producttags .message.info.notlogged {
+    float: left;
+    width: 100%;
+    clear: both;
+}

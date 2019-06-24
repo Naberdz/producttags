@@ -85,5 +85,20 @@
 				</validation>
 			</settings>
 		</field>
+		<field formElement="input" name="user_id" sortOrder="40">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Tags</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">user_id</label>
+				<dataScope>user_id</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+			</settings>
+		</field>
 	</fieldset>
 </form>

@@ -17,6 +17,13 @@ if($tags->getSize()):?>
 <?php else : ?>
 <div class="message info"><div><?= __('There where no tags for this product'); ?></div></div>
 <?php endif; ?>
+<?php if($block->getOnlyForCustomers() && !$block->getIsLoggedIn()): ?>
+	<div class="message info notlogged">
+        <div>
+            <?= $block->escapeHtml(__('Only registered users can add tags. Please <a href="%1">Sign in</a> or <a href="%2">create an account</a>', $block->getLoginLink(), $block->getRegisterUrl()), ['a']) ?>
+        </div>
+    </div>
+<?php else: ?>
 <form method="post" id="addtag">
 	<input type="hidden" name="product_id" value="<?= $product->getId(); ?>" />
 	<input type="hidden" name="product_name" value="<?= $product->getName(); ?>" />
@@ -25,6 +32,7 @@ if($tags->getSize()):?>
 		<button type="submit" class="action primary"><?= __('Add tags');?></button>
 	</div>
 </form>
+<?php endif; ?>
 </div>
 <div id="popup-modal"></div>
 <script>
