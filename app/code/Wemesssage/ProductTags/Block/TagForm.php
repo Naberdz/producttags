@@ -4,7 +4,7 @@ namespace Wemessage\ProductTags\Block;
 
 class TagForm extends \Magento\Framework\View\Element\Template
 {
-	/**
+    /**
      * @var \Magento\Framework\Registry
      */
     protected $_registry;
@@ -20,20 +20,20 @@ class TagForm extends \Magento\Framework\View\Element\Template
     private $_product;
     
     /**
-	 * @var \Magento\Framework\App\Config\ScopeConfigInterface
-	 */
-	protected $_scopeConfig;
-	/**
-	 * @var \Magento\Store\Model\StoreManagerInterface
-	 */
+     * @var \Magento\Framework\App\Config\ScopeConfigInterface
+     */
+    protected $_scopeConfig;
+    /**
+     * @var \Magento\Store\Model\StoreManagerInterface
+     */
     protected $_storeManager;
     /**
-	 * @var \Magento\Customer\Model\Session
-	 */
+     * @var \Magento\Customer\Model\Session
+     */
     protected $_session;
     /**
-	 * @var \Magento\Customer\Model\Url
-	 */
+     * @var \Magento\Customer\Model\Url
+     */
     protected $_customerUrl;
     
     /**
@@ -86,7 +86,7 @@ class TagForm extends \Magento\Framework\View\Element\Template
      * @return \Wemessage\ProductTags\Model\ResourceModel\Tags\Collection $collection
      */
     public function getTags(){
-    	return $this->_tagsFactory->getCollection()->addFieldToFilter('product_id', array('eq'=>$this->_product->getId()));
+        return $this->_tagsFactory->getCollection()->addFieldToFilter('product_id', array('eq'=>$this->_product->getId()));
     }
     
     /**
@@ -95,20 +95,20 @@ class TagForm extends \Magento\Framework\View\Element\Template
     public function getFrontendUrl(){
         return $this->_storeManager->getStore()->getBaseUrl().$this->_scopeConfig->getValue('producttags/options/tagslug', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
     }
-	/**
-	 * @return boolean
-	 */
-	public function getOnlyForCustomers(){
-		return $this->_scopeConfig->getValue('producttags/options/onlyforcustomers', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
-	}
-	/**
-	 * @return boolean
-	 */
-	public function getIsLoggedIn(){
-		return $this->_session->isLoggedIn();
-	}
-	
-	/**
+    /**
+     * @return boolean
+     */
+    public function getOnlyForCustomers(){
+        return $this->_scopeConfig->getValue('producttags/options/onlyforcustomers', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+    }
+    /**
+     * @return boolean
+     */
+    public function getIsLoggedIn(){
+        return $this->_session->isLoggedIn();
+    }
+    
+    /**
      * @return string
      */
     public function getRegisterUrl()

@@ -5,22 +5,22 @@ namespace Wemessage\ProductTags\Block\Index;
 
 class Index extends \Magento\Catalog\Block\Product\AbstractProduct
 {
-	/**
-	 * @var \Magento\Framework\App\RequestInterface
-	 */
-	protected $_request;
-	/**
-	 * @var \Wemessage\ProductTags\Model\TagsFactory
-	 */
-	protected $_tagsFactory;
-	/**
-	 * @var \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory
-	 */
-	protected $_collectionFactory;
-	/**
-	 * @var \Magento\Catalog\Block\Product\ImageBuilder
-	 */
-	protected $_imageBuilder;
+    /**
+     * @var \Magento\Framework\App\RequestInterface
+     */
+    protected $_request;
+    /**
+     * @var \Wemessage\ProductTags\Model\TagsFactory
+     */
+    protected $_tagsFactory;
+    /**
+     * @var \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory
+     */
+    protected $_collectionFactory;
+    /**
+     * @var \Magento\Catalog\Block\Product\ImageBuilder
+     */
+    protected $_imageBuilder;
     /**
      * Constructor
      *
@@ -53,19 +53,19 @@ class Index extends \Magento\Catalog\Block\Product\AbstractProduct
     protected function _prepareLayout()
     {
         $title = '';
-		if($this->_request->getParam('tag')){
-			$title = __('Tag %1', $this->_request->getParam('tag'));
-        	$this->_addBreadcrumbs($this->_request->getParam('tag'), 'tags');
+        if($this->_request->getParam('tag')){
+            $title = __('Tag %1', $this->_request->getParam('tag'));
+            $this->_addBreadcrumbs($this->_request->getParam('tag'), 'tags');
         } else {
-        	$title = __('Tags');
-        	$this->_addBreadcrumbs();
+            $title = __('Tags');
+            $this->_addBreadcrumbs();
         }
         if ($this->getTaggedCollection()) {
             $pager = $this->getLayout()
-            	->createBlock(
-                	'Wemessage\ProductTags\Block\CustomPager',
-                	'wemessage.tags.pager'
-            	)->setAvailableLimit(array($this->getNumberOfProducts()=>$this->getNumberOfProducts()))
+                ->createBlock(
+                    'Wemessage\ProductTags\Block\CustomPager',
+                    'wemessage.tags.pager'
+                )->setAvailableLimit(array($this->getNumberOfProducts()=>$this->getNumberOfProducts()))
                 ->setShowPerPage(true)
                 ->setCollection(
                     $this->getTaggedCollection()
@@ -74,45 +74,45 @@ class Index extends \Magento\Catalog\Block\Product\AbstractProduct
             $this->getTaggedCollection()->load();
         }
         $this->pageConfig->setRobots('NOINDEX,NOFOLLOW');
-		$this->pageConfig->getTitle()->set($title);
-		$pageMainTitle = $this->getLayout()->getBlock('page.main.title');
-		if ($pageMainTitle) {
-			$pageMainTitle->setPageTitle(
-				$this->escapeHtml($title)
-			);
-		}
+        $this->pageConfig->getTitle()->set($title);
+        $pageMainTitle = $this->getLayout()->getBlock('page.main.title');
+        if ($pageMainTitle) {
+            $pageMainTitle->setPageTitle(
+                $this->escapeHtml($title)
+            );
+        }
         return parent::_prepareLayout();
     }
     /**
      * @return \Wemessage\ProductTags\Model\ResourceModel\Tags\Collection
      */
     public function getTaggedCollection(){
-    	$page = ($this->_request->getParam('p')) ? $this->_request->getParam('p') : 1;
-    	$pageSize=($this->_request->getParam('limit'))? $this->_request->getParam('limit') : $this->getNumberOfProducts();
-    	if($this->_request->getParam('tag')){
-    		$tagCollection = $this->_tagsFactory->getCollection()->addFieldToFilter('tag', array('eq'=>$this->_request->getParam('tag')));
-    	} else {
-    		$tagCollection = $this->_tagsFactory->getCollection();
-    	}
-    	$productIds = [];
-    	foreach($tagCollection as $tag){
-    		$productIds[] = $tag->getProductId();
-    	}
-    	//var_dump($productIds);
-    	$collection = $this->_collectionFactory->create();
-    	$collection->addFieldToFilter('entity_id', array('in'=>$productIds));
-    	$collection->setPageSize($pageSize);
-    	$collection->setCurPage($page);
-    	$collection->addAttributeToSelect('*');
-    	return $collection;
+        $page = ($this->_request->getParam('p')) ? $this->_request->getParam('p') : 1;
+        $pageSize=($this->_request->getParam('limit'))? $this->_request->getParam('limit') : $this->getNumberOfProducts();
+        if($this->_request->getParam('tag')){
+            $tagCollection = $this->_tagsFactory->getCollection()->addFieldToFilter('tag', array('eq'=>$this->_request->getParam('tag')));
+        } else {
+            $tagCollection = $this->_tagsFactory->getCollection();
+        }
+        $productIds = [];
+        foreach($tagCollection as $tag){
+            $productIds[] = $tag->getProductId();
+        }
+        //var_dump($productIds);
+        $collection = $this->_collectionFactory->create();
+        $collection->addFieldToFilter('entity_id', array('in'=>$productIds));
+        $collection->setPageSize($pageSize);
+        $collection->setCurPage($page);
+        $collection->addAttributeToSelect('*');
+        return $collection;
     }
     /**
      * @return \Wemessage\ProductTags\Model\ResourceModel\Tags\Collection
      */
     public function getAllTags(){
-    	$collection = $this->_tagsFactory->getCollection();
-    	$collection->getSelect()->columns('COUNT(*) AS amount')->group('tag');
-    	return $collection;
+        $collection = $this->_tagsFactory->getCollection();
+        $collection->getSelect()->columns('COUNT(*) AS amount')->group('tag');
+        return $collection;
     }
     /**
      * @return pagerhtml
@@ -122,13 +122,13 @@ class Index extends \Magento\Catalog\Block\Product\AbstractProduct
         return $this->getChildHtml('pager');
     }
 
-	/**
+    /**
      * @return string
      */
-	public function getDisplayMode(){
-		return 'grid';
-	}
-	/**
+    public function getDisplayMode(){
+        return 'grid';
+    }
+    /**
      * @return string
      */
     public function getTagsFrontendUrl(){
@@ -138,9 +138,9 @@ class Index extends \Magento\Catalog\Block\Product\AbstractProduct
      * @return integer
      */
     public function getNumberOfProducts(){
-    	return $this->_scopeConfig->getValue('producttags/options/numberofproducts', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        return $this->_scopeConfig->getValue('producttags/options/numberofproducts', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
     }
-	/**
+    /**
      * Prepare breadcrumbs
      *
      * @param  string $title
@@ -162,27 +162,27 @@ class Index extends \Magento\Catalog\Block\Product\AbstractProduct
                 ]
             );
             if($title){
-				$breadcrumbsBlock->addCrumb(
-					'tag',
-					[
-						'label' => __('Tags'),
-						'title' => __('Tags'),
-						'link' => $this->getTagsFrontendUrl()
-					]
-				);
-				$breadcrumbsBlock->addCrumb($key, [
-					'label' => $title,
-					'title' => $title
-				]);
-			} else {
-				$breadcrumbsBlock->addCrumb(
-					'tag',
-					[
-						'label' => __('Tags'),
-						'title' => __('Tags'),
-					]
-				);
-			}
+                $breadcrumbsBlock->addCrumb(
+                    'tag',
+                    [
+                        'label' => __('Tags'),
+                        'title' => __('Tags'),
+                        'link' => $this->getTagsFrontendUrl()
+                    ]
+                );
+                $breadcrumbsBlock->addCrumb($key, [
+                    'label' => $title,
+                    'title' => $title
+                ]);
+            } else {
+                $breadcrumbsBlock->addCrumb(
+                    'tag',
+                    [
+                        'label' => __('Tags'),
+                        'title' => __('Tags'),
+                    ]
+                );
+            }
         }
     }
 }

@@ -4,7 +4,7 @@ namespace Wemessage\ProductTags\Block;
 
 class AlsoTagged extends \Magento\Catalog\Block\Product\AbstractProduct
 {
-	/**
+    /**
      * @var \Magento\Framework\Registry
      */
     protected $_registry;
@@ -17,12 +17,12 @@ class AlsoTagged extends \Magento\Catalog\Block\Product\AbstractProduct
      */
     private $_product;
     /**
-	 * @var \Magento\Framework\App\Config\ScopeConfigInterface
-	 */
-	protected $_scopeConfig;
-	/**
-	 * @var \Magento\Store\Model\StoreManagerInterface
-	 */
+     * @var \Magento\Framework\App\Config\ScopeConfigInterface
+     */
+    protected $_scopeConfig;
+    /**
+     * @var \Magento\Store\Model\StoreManagerInterface
+     */
     protected $_storeManager;
     /**
      * @var \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory
@@ -72,41 +72,41 @@ class AlsoTagged extends \Magento\Catalog\Block\Product\AbstractProduct
      * @return \Magento\Catalog\Model\ResourceModel\Product\Collection $collection
      */
     public function getTaggedProducts($pageSize){
-    	$tagCollection = $this->getTags();
-    	$productIds = [];
-    	foreach($tagCollection as $tag){
-			$productsTagged = $this->getTagCollection($tag->getTag());
-			foreach($productsTagged as $prod){
-				if($this->_product->getId() != $prod->getProductId()){
-					$productIds[] = $prod->getProductId();
-				}
-			}
-    	}
-    	$collection = $this->_collectionFactory->create();
-    	$collection->addFieldToFilter('entity_id', array('in'=>$productIds));
-    	$collection->setPageSize($pageSize);
-    	$collection->addAttributeToSelect('*');
-    	return $collection;
+        $tagCollection = $this->getTags();
+        $productIds = [];
+        foreach($tagCollection as $tag){
+            $productsTagged = $this->getTagCollection($tag->getTag());
+            foreach($productsTagged as $prod){
+                if($this->_product->getId() != $prod->getProductId()){
+                    $productIds[] = $prod->getProductId();
+                }
+            }
+        }
+        $collection = $this->_collectionFactory->create();
+        $collection->addFieldToFilter('entity_id', array('in'=>$productIds));
+        $collection->setPageSize($pageSize);
+        $collection->addAttributeToSelect('*');
+        return $collection;
     }
     /**
      * @return \Wemessage\ProductTags\Model\ResourceModel\Tags\Collection $collection
      */
     public function getTags(){
-    	if(is_null($this->_product)){
-    		$this->getCurrentProduct();
-    	}
-    	return $this->_tagsFactory->getCollection()->addFieldToFilter('product_id', array('eq'=>$this->_product->getId()));
+        if(is_null($this->_product)){
+            $this->getCurrentProduct();
+        }
+        return $this->_tagsFactory->getCollection()->addFieldToFilter('product_id', array('eq'=>$this->_product->getId()));
     }
     /**
      * @return \Wemessage\ProductTags\Model\ResourceModel\Tags\Collection $collection
      */
     public function getTagCollection($tag){
-    	return $this->_tagsFactory->getCollection()->addFieldToFilter('tag', array('eq'=>$tag));
+        return $this->_tagsFactory->getCollection()->addFieldToFilter('tag', array('eq'=>$tag));
     }
     /**
      * @return integer
      */
     public function getProductLimit(){
-    	return $this->_scopeConfig->getValue('producttags/options/taggedproductslimit', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        return $this->_scopeConfig->getValue('producttags/options/taggedproductslimit', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
     }
 }

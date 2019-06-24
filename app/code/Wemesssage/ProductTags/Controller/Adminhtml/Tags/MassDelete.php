@@ -5,7 +5,7 @@ namespace Wemessage\ProductTags\Controller\Adminhtml\Tags;
 
 class MassDelete extends \Magento\Backend\App\Action
 {
-	protected $_filter;
+    protected $_filter;
 
     protected $_tagsFactory;
 
@@ -34,9 +34,9 @@ class MassDelete extends \Magento\Backend\App\Action
         $collection = $this->_tagsFactory->getCollection()->addFieldToFilter('tags_id', array('in'=>$data['selected']));
         
         foreach ($collection as $record) {
-        	$model = $this->_objectManager->create(\Wemessage\ProductTags\Model\Tags::class);
+            $model = $this->_objectManager->create(\Wemessage\ProductTags\Model\Tags::class);
             $model->load($record->getId());
-        	try {                
+            try {                
                 $model->delete();
                 $recordDeleted++;
             } catch (\Exception $e) {
@@ -47,10 +47,10 @@ class MassDelete extends \Magento\Backend\App\Action
             }
         }
         if(!$recordDeleted){
-        	// display error message
-        	$this->messageManager->addErrorMessage(__('We can\'t find a Tags to delete.'));
+            // display error message
+            $this->messageManager->addErrorMessage(__('We can\'t find a Tags to delete.'));
         } else {
-        	$this->messageManager->addSuccess(__('A total of %1 record(s) have been deleted.', $recordDeleted));
+            $this->messageManager->addSuccess(__('A total of %1 record(s) have been deleted.', $recordDeleted));
         }
         // go to grid
         return $resultRedirect->setPath('*/*/');

@@ -1,22 +1,22 @@
 <?xml version="1.0" ?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
-	<acl>
-		<resources>
-			<resource id="Magento_Backend::admin">
-				<resource id="Magento_Backend::stores">
-					<resource id="Magento_Backend::stores_settings">
-						<resource id="Magento_Config::config">
-							<resource id="Wemessage_ProductTags::config_wemessage_producttags" title="producttags"/>
-						</resource>
-					</resource>
-				</resource>
-				<resource id="Wemessage_ProductTags::Tags" sortOrder="10" title="Tags">
-					<resource id="Wemessage_ProductTags::Tags_save" sortOrder="10" title="Save Tags"/>
-					<resource id="Wemessage_ProductTags::Tags_delete" sortOrder="20" title="Delete Tags"/>
-					<resource id="Wemessage_ProductTags::Tags_update" sortOrder="30" title="Update Tags"/>
-					<resource id="Wemessage_ProductTags::Tags_view" sortOrder="40" title="View Tags"/>
-				</resource>
-			</resource>
-		</resources>
-	</acl>
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Wemessage_ProductTags::config_wemessage_producttags" title="producttags"/>
+                        </resource>
+                    </resource>
+                </resource>
+                <resource id="Wemessage_ProductTags::Tags" sortOrder="10" title="Tags">
+                    <resource id="Wemessage_ProductTags::Tags_save" sortOrder="10" title="Save Tags"/>
+                    <resource id="Wemessage_ProductTags::Tags_delete" sortOrder="20" title="Delete Tags"/>
+                    <resource id="Wemessage_ProductTags::Tags_update" sortOrder="30" title="Update Tags"/>
+                    <resource id="Wemessage_ProductTags::Tags_view" sortOrder="40" title="View Tags"/>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
 </config>

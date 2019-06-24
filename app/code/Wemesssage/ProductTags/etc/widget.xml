@@ -4,12 +4,12 @@
         <label>Product tags widget</label>
         <description></description>
         <parameters>
-        	<parameter name="widgettitle" sort_order="10" visible="true" xsi:type="text">
-        		<label>Title</label>
-        	</parameter>
-        	<parameter name="limit" sort_order="10" visible="true" xsi:type="text">
-        		<label>Tags Limit</label>
-        	</parameter>
+            <parameter name="widgettitle" sort_order="10" visible="true" xsi:type="text">
+                <label>Title</label>
+            </parameter>
+            <parameter name="limit" sort_order="10" visible="true" xsi:type="text">
+                <label>Tags Limit</label>
+            </parameter>
         </parameters>
     </widget>
 </widgets>

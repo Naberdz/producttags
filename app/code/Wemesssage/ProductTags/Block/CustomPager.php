@@ -5,12 +5,12 @@ namespace Wemessage\ProductTags\Block;
 class CustomPager extends \Magento\Theme\Block\Html\Pager
 {
     /**
-	 * @var \Magento\Framework\App\Config\ScopeConfigInterface
-	 */
-	protected $_scopeConfig;
-	/**
-	 * @var \Magento\Store\Model\StoreManagerInterface
-	 */
+     * @var \Magento\Framework\App\Config\ScopeConfigInterface
+     */
+    protected $_scopeConfig;
+    /**
+     * @var \Magento\Store\Model\StoreManagerInterface
+     */
     protected $_storeManager;
     /**
      * Constructor

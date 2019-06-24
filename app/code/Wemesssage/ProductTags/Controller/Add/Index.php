@@ -3,7 +3,7 @@ namespace Wemessage\ProductTags\Controller\Add;
 
 class Index extends \Magento\Framework\App\Action\Action
 {
-	/**
+    /**
      * @var \Magento\Framework\View\Result\PageFactory
      */
     protected $resultPageFactory;
@@ -18,7 +18,7 @@ class Index extends \Magento\Framework\App\Action\Action
     /**
      * @var \Magento\Customer\Model\Session
      */
-	protected $_session;
+    protected $_session;
     /**
      * Constructor
      *
@@ -48,28 +48,28 @@ class Index extends \Magento\Framework\App\Action\Action
      */
     public function execute()
     {
-    	$response = [];
-    	$data = $this->getRequest()->getPostValue();
+        $response = [];
+        $data = $this->getRequest()->getPostValue();
 
-    	if(!$data['tag']){
-    		$response = array('error'=>true, 'msg'=>__('Please fill in tags'));
-    	} else {
-    		$allTags = explode(',', $data['tag']);
-    		foreach($allTags as $tagName){
-    			$tag = $this->_tags;
-    			$tag->setProductId($data['product_id']);
-    			$tag->setProductName($data['product_name']);
-    			$tag->setTag($tagName);
-    			if($this->_session->isLoggedin()){
-    				$tag->setUserId($this->_session->getCustomer()->getId());
-    			} else {
-    				$tag->setUserId(0);
-    			}
-    			$tag->save();
-    		}
-    		$response = array('success'=>true, 'msg'=>__('Thank you for your input'));
-    	}
-    	
+        if(!$data['tag']){
+            $response = array('error'=>true, 'msg'=>__('Please fill in tags'));
+        } else {
+            $allTags = explode(',', $data['tag']);
+            foreach($allTags as $tagName){
+                $tag = $this->_tags;
+                $tag->setProductId($data['product_id']);
+                $tag->setProductName($data['product_name']);
+                $tag->setTag($tagName);
+                if($this->_session->isLoggedin()){
+                    $tag->setUserId($this->_session->getCustomer()->getId());
+                } else {
+                    $tag->setUserId(0);
+                }
+                $tag->save();
+            }
+            $response = array('success'=>true, 'msg'=>__('Thank you for your input'));
+        }
+        
         try {
             return $this->jsonResponse($response);
         } catch (\Magento\Framework\Exception\LocalizedException $e) {

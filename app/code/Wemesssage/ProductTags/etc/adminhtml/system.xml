@@ -1,58 +1,58 @@
 <?xml version="1.0" ?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
-	<system>
-		<tab id="wemessage" sortOrder="999" translate="label">
-			<label>Wemessage</label>
-		</tab>
-		<section id="producttags" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
-			<label>Product Tags</label>
-			<tab>wemessage</tab>
-			<resource>Wemessage_ProductTags::config_wemessage_producttags</resource>
-			<group id="options" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
-				<label>Module Options</label>
-				<field id="enable" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="select">
-					<label>Enable</label>
-					<comment>enable module</comment>
-					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-				</field>
-				<field id="tagslug" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="text">
-					<label>Tag slug</label>
-					<comment>Slug under which it will be visible in frontend</comment>
-					<depends>
+    <system>
+        <tab id="wemessage" sortOrder="999" translate="label">
+            <label>Wemessage</label>
+        </tab>
+        <section id="producttags" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+            <label>Product Tags</label>
+            <tab>wemessage</tab>
+            <resource>Wemessage_ProductTags::config_wemessage_producttags</resource>
+            <group id="options" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+                <label>Module Options</label>
+                <field id="enable" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="select">
+                    <label>Enable</label>
+                    <comment>enable module</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="tagslug" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="text">
+                    <label>Tag slug</label>
+                    <comment>Slug under which it will be visible in frontend</comment>
+                    <depends>
                         <field id="producttags/options/enable">1</field>
                     </depends>
-				</field>
-				<field id="onlyforcustomers" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="select">
-					<label>Only for customers</label>
-					<comment>Allow only registered customers to add tags</comment>
-					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-					<depends>
+                </field>
+                <field id="onlyforcustomers" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="select">
+                    <label>Only for customers</label>
+                    <comment>Allow only registered customers to add tags</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
                         <field id="producttags/options/enable">1</field>
                     </depends>
-				</field>
-				<field id="numberofproducts" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="text">
-					<label>Number of products per page</label>
-					<comment>How many products will be shown on tag overview page</comment>
-					<depends>
+                </field>
+                <field id="numberofproducts" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="text">
+                    <label>Number of products per page</label>
+                    <comment>How many products will be shown on tag overview page</comment>
+                    <depends>
                         <field id="producttags/options/enable">1</field>
                     </depends>
-				</field>
-				<field id="showalsotagged" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="select">
-					<label>Show Also tagged products</label>
-					<comment>Will add block to the product page with also tagged products</comment>
-					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-					<depends>
+                </field>
+                <field id="showalsotagged" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="select">
+                    <label>Show Also tagged products</label>
+                    <comment>Will add block to the product page with also tagged products</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
                         <field id="producttags/options/enable">1</field>
                     </depends>
-				</field>
-				<field id="taggedproductslimit" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="text">
-					<label>Number of tagged products</label>
-					<comment>How many product will be shown as also tagged</comment>
-					<depends>
+                </field>
+                <field id="taggedproductslimit" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label" type="text">
+                    <label>Number of tagged products</label>
+                    <comment>How many product will be shown as also tagged</comment>
+                    <depends>
                         <field id="producttags/options/showalsotagged">1</field>
                     </depends>
                 </field>
-			</group>
-		</section>
-	</system>
+            </group>
+        </section>
+    </system>
 </config>
