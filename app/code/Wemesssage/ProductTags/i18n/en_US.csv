@@ -1,0 +1,61 @@
+Back,Back
+"Delete Tags","Delete Tags"
+"Are you sure you want to do this?","Are you sure you want to do this?"
+"Save and Continue Edit","Save and Continue Edit"
+"Save Tags","Save Tags"
+"Failed to initialize product","Failed to initialize product"
+"Tag %1","Tag %1"
+Tags,Tags
+Home,Home
+"Go to Home Page","Go to Home Page"
+"Please fill in tags","Please fill in tags"
+"Thank you for your input","Thank you for your input"
+Wemessage,Wemessage
+"You deleted the Tags.","You deleted the Tags."
+"We can't find a Tags to delete.","We can't find a Tags to delete."
+"This Tags no longer exists.","This Tags no longer exists."
+"Edit Tags","Edit Tags"
+"New Tags","New Tags"
+Tagss,Tagss
+"Edit Tags %1","Edit Tags %1"
+"Please correct the data sent.","Please correct the data sent."
+"A total of %1 record(s) have been deleted.","A total of %1 record(s) have been deleted."
+"You saved the Tags.","You saved the Tags."
+"Something went wrong while saving the Tags.","Something went wrong while saving the Tags."
+"Could not save the tags: %1","Could not save the tags: %1"
+"Tags with id ""%1"" does not exist.","Tags with id ""%1"" does not exist."
+"Could not delete the Tags: %1","Could not delete the Tags: %1"
+Edit,Edit
+Delete,Delete
+"Delete ""${ $.$data.title }""","Delete ""${ $.$data.title }"""
+"Are you sure you wan't to delete a ""${ $.$data.title }"" record?","Are you sure you wan't to delete a ""${ $.$data.title }"" record?"
+"Tagged products","Tagged products"
+"Add to Cart","Add to Cart"
+"In stock","In stock"
+"Out of stock","Out of stock"
+"We can't find products matching the selection.","We can't find products matching the selection."
+"There where no tags for this product","There where no tags for this product"
+"Only registered users can add tags. Please <a href=""%1"">Sign in</a> or <a href=""%2"">create an account</a>","Only registered users can add tags. Please <a href=""%1"">Sign in</a> or <a href=""%2"">create an account</a>"
+"Input tags separeted with ,","Input tags separeted with ,"
+"Add tags","Add tags"
+Continue,Continue
+"Product Tags","Product Tags"
+"Module Options","Module Options"
+Enable,Enable
+"Tag slug","Tag slug"
+"Only for customers","Only for customers"
+"Number of products per page","Number of products per page"
+"Show Also tagged products","Show Also tagged products"
+"Number of tagged products","Number of tagged products"
+"General Information","General Information"
+product_id,product_id
+product_name,product_name
+tag,tag
+user_id,user_id
+"Add new Tags","Add new Tags"
+"Delete item","Delete item"
+"Are you sure you wan't to delete selected items?","Are you sure you wan't to delete selected items?"
+ID,ID
+"product name","product name"
+Tag,Tag
+"1 column plugin page","1 column plugin page"
